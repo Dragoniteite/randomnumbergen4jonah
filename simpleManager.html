@@ -1,0 +1,97 @@
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: rgb(3, 3, 3)
+    }
+
+    .container {
+        padding: 40px;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+        color: #FFF;
+    }
+
+    ul {
+        margin: 20px 0;
+        list-style: none;
+    }
+
+    li {
+        margin: 10px 0;
+    }
+
+    .inflow {
+        color: lightgreen;
+    }
+
+    .outflow {
+        color: lightcoral;
+    }
+
+    input {
+        border: none;
+        background: #FFF;
+        padding: 5px;
+        border-radius: 20px;
+        margin: 20px 0;
+    }
+
+    button {
+        border: none;
+        padding: 5px;
+        border-radius: 10px;
+    }
+
+    #inflowBtn {
+        background-color: lightgreen;
+    }
+
+    #outflowBtn {
+        background-color: lightcoral;
+    }
+</style>
+
+<div class="container">
+    <h2>Simple Manager</h2>
+    <input id="chashInp" type="text">
+    <button id="inflowBtn">Inflow</button>
+    <button id="outflowBtn">Outflow</button>
+    <p class="inflow">Total Inflow: <span id="totalInflow">0</span></p>
+    <p class="outflow">Total Outflow: <span id="totalOutflow">0</span></p>
+    <ul id="list">
+    </ul>
+</div>
+
+<script>
+    let input = document.getElementById("chashInp")
+    let inflow = document.getElementById("inflowBtn")
+    let outflow = document.getElementById("outflowBtn")
+    let inflowText = document.getElementById("totalInflow")
+    let outflowText = document.getElementById("totalOutflow")
+    let list = document.getElementById("list")
+    let inflowCounter = 0
+    function handleInflow(){
+        let x = document.createElement("li")
+        x = input.value
+        inflowCounter += x
+        input.value = ""
+        list.innerHTML += `<li class = "color">${x}<h1>`
+        list.append(x)
+        inflowText.innerHTML = inflowCounter
+    }
+    function handleOutflow(){
+        let x = document.createElement("li")
+        x = input.value
+        input.value = ""
+        let h1 = document.createElement("li")
+        list.innerHTML += `<li class = "color">${x}<h1>`
+        list.append(x)
+        inflowText.innerHTML = x
+    }
+    inflow.addEventListener("click", handleInflow)
+    outflow.addEventListener("click", handleOutflow)
+</script>
